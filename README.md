@@ -34,7 +34,7 @@ ready-to-paste generation prompt per shot → you generate and drop the clips in
 `library/broll/`. Next video searches the library first (`broll-library.sh search …`) and only asks for new clips.
 
 **4. Audio library** — `library/music/` and `library/sfx/` (auto-indexed with `sfx-index.mjs`).
-Placement rules are built in: whoosh on cuts, impact on stats, riser ending on the reveal, one SFX per
+Sound files are not bundled (licences) — bring your own, see `library/sfx/README.md`. Placement rules are built in: whoosh on cuts, impact on stats, riser ending on the reveal, one SFX per
 3–5 s, all on one track at low volume so you can mute them in Studio.
 
 **5. Gujarati → Gujlish captions** — local whisper large-v3 transcription, converted once to natural
