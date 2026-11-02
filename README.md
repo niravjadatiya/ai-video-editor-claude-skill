@@ -7,6 +7,44 @@ A Claude Code workspace kit for making short talking-head reels with the
 transcription (whisper.cpp large-v3) with Gujlish captions, B-roll shot lists with a reusable library,
 SFX placement rules, frame review, and house editing rules.
 
+## Why it's different (key features)
+
+**1. Token-saving by design** — the agent never watches raw video.
+- `analyze-media.sh` → one text `REPORT.md` + **one contact-sheet image per clip** (12 frames in a 4×3 grid) instead of dozens of frame reads.
+- `review-frames.sh` → up to 12 key moments tiled into **one `review.jpg`** for pre-render QA (1 image read, not 12).
+- Transcripts are exported to SRT once; the raw word-level JSON is never read.
+- Studio preview is free, so you review there and render once. No subagents, short replies.
+
+**2. Reference-reel styles** — drop in a reel you like; the kit writes a ≤25-line style note
+(pacing, captions, typography, motion, transitions, SFX rhythm) to `library/styles/`. Reuse it on any
+future video with `style: <name>` and it is never re-analyzed. Recreates the *style*, never copies footage.
+
+**3. B-roll loop (reusable)** — the agent writes `inputs/broll/SHOTLIST.md` with shot ids, durations and a
+ready-to-paste generation prompt per shot → you generate and drop the clips in that folder → say
+**"broll done"** → `broll-status.sh` checks them → `broll-library.sh archive` saves them to
+`library/broll/`. Next video searches the library first (`broll-library.sh search …`) and only asks for new clips.
+
+**4. Audio library** — `library/music/` and `library/sfx/` (auto-indexed with `sfx-index.mjs`).
+Placement rules are built in: whoosh on cuts, impact on stats, riser ending on the reveal, one SFX per
+3–5 s, all on one track at low volume so you can mute them in Studio.
+
+**5. Gujarati → Gujlish captions** — local whisper large-v3 transcription, converted once to natural
+Latin-script Gujarati (English words stay English). Any other language works with normal captions.
+
+**6. House rules** — face-safe layouts, dead-air trim, watermark crop, checkpoints (`restore v2`)… all in
+`.claude/editing-principles.md`; edit to your taste.
+
+## Requirements
+
+| Package | Used for | Install |
+| --- | --- | --- |
+| Claude Code + HyperFrames plugin | the whole workflow | `hyperframes@hyperframes` |
+| ffmpeg / ffprobe | analysis, contact sheets, trims | `brew install ffmpeg` |
+| whisper-cpp (`whisper-cli`) | local transcription | `brew install whisper-cpp` |
+| `ggml-large-v3.bin` | Gujarati-capable model | download to `~/.cache/hyperframes/whisper/models/` |
+| Node 18+ | Gujlish, SFX index scripts | `brew install node` |
+| Python venv with Kokoro | free local voice-over (optional) | set `HYPERFRAMES_PYTHON` |
+
 ## Contents
 - `CLAUDE.md` — workspace conventions and token budget
 - `.claude/commands/` — `/new-video`, `/broll-plan`
