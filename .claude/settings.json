@@ -1,0 +1,7 @@
+{
+  "env": {
+    "HYPERFRAMES_PYTHON": "/path/to/your/kokoro-venv/bin/python",
+    "WHISPER_LANG": "gu",
+    "WHISPER_MODEL": "large-v3"
+  }
+}
