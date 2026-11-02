@@ -7,9 +7,14 @@ A Claude Code workspace kit for making short talking-head reels with the
 transcription (whisper.cpp large-v3) with Gujlish captions, B-roll shot lists with a reusable library,
 SFX placement rules, frame review, and house editing rules.
 
-![demo](docs/demo.gif)
+## Before → After (same 30s)
 
-[▶ Watch the 30s demo with sound (mp4)](docs/demo.mp4) · made entirely with this kit.
+| Raw footage (phone clip) | Edited with this kit |
+| :---: | :---: |
+| <img src="docs/original.gif" width="240"> | <img src="docs/demo.gif" width="240"> |
+| [▶ raw mp4](docs/original.mp4) | [▶ edited mp4 (sound)](docs/demo.mp4) |
+
+Captions, title cards, B-roll, SFX and layout were all added by Claude using this kit.
 
 ## Why it's different (key features)
 
