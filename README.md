@@ -7,6 +7,10 @@ A Claude Code workspace kit for making short talking-head reels with the
 transcription (whisper.cpp large-v3) with Gujlish captions, B-roll shot lists with a reusable library,
 SFX placement rules, frame review, and house editing rules.
 
+![demo](docs/demo.gif)
+
+[▶ Watch the 30s demo with sound (mp4)](docs/demo.mp4) · made entirely with this kit.
+
 ## Why it's different (key features)
 
 **1. Token-saving by design** — the agent never watches raw video.
