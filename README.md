@@ -69,6 +69,8 @@ Latin-script Gujarati (English words stay English). Any other language works wit
 
 ## Requirements
 
+**Tested on:** macOS 26 (Apple Silicon, M-series). Linux/Windows not tested yet; PRs welcome.
+
 | Package | Used for | Install |
 | --- | --- | --- |
 | Claude Code + HyperFrames plugin | the whole workflow | `hyperframes@hyperframes` |
