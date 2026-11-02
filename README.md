@@ -7,7 +7,7 @@ A Claude Code workspace kit for making short talking-head reels with the
 transcription (whisper.cpp large-v3) with Gujlish captions, B-roll shot lists with a reusable library,
 SFX placement rules, frame review, and house editing rules.
 
-## Before → After (same 30s)
+## Before → After
 
 | Raw footage (phone clip) | Edited with this kit |
 | :---: | :---: |
@@ -15,6 +15,30 @@ SFX placement rules, frame review, and house editing rules.
 | [▶ raw mp4](docs/original.mp4) | [▶ edited mp4 (sound)](docs/demo.mp4) |
 
 Captions, title cards, B-roll, SFX and layout were all added by Claude using this kit.
+
+## Quick start
+
+Put your files in one command; everything after `--` is your instruction.
+
+```
+# 1. Just footage
+/new-video my-reel path/to/footage.mp4 -- 9:16 reel for Instagram, add captions
+
+# 2. Footage + a reference reel to copy the style from
+/new-video my-reel path/to/footage.mp4 --as references path/to/reference.mp4 -- same style as the reference
+
+# 3. Reuse a style you saved earlier (no reference file needed)
+/new-video my-reel path/to/footage.mp4 -- style: my-reference-name, 9:16 reel
+
+# 4. Other languages / extras
+/new-video my-reel path/to/footage.mp4 -- video is in English, normal captions
+/broll-plan my-reel            # only the B-roll shot list + prompts
+```
+
+What happens: files are sorted into `videos/my-reel/inputs/` → cheap analysis → Claude asks its
+questions in one message → **B-roll list (you generate, say "broll done")** → build → one-image review →
+Studio preview → render after your OK. Flags: `--as footage|references|broll|images|audio|docs`,
+`--move` (move instead of copy big files). Reference footage is used for style only, never in the output.
 
 ## Why it's different (key features)
 
@@ -24,7 +48,7 @@ Captions, title cards, B-roll, SFX and layout were all added by Claude using thi
 - Transcripts are exported to SRT once; the raw word-level JSON is never read.
 - Studio preview is free, so you review there and render once. No subagents, short replies.
 
-**2. Reference-reel styles** — drop in a reel you like; the kit writes a ≤25-line style note
+**2. Reference-reel styles** — pass a reel you like with `--as references`; the kit writes a ≤25-line style note
 (pacing, captions, typography, motion, transitions, SFX rhythm) to `library/styles/`. Reuse it on any
 future video with `style: <name>` and it is never re-analyzed. Recreates the *style*, never copies footage.
 
@@ -69,12 +93,7 @@ Latin-script Gujarati (English words stay English). Any other language works wit
 4. Edit `.claude/settings.json`: set `HYPERFRAMES_PYTHON` to a Python with Kokoro (for TTS) and keep
    `WHISPER_LANG` / `WHISPER_MODEL` (use `en` for English).
 5. Download `ggml-large-v3.bin` from whisper.cpp to `~/.cache/hyperframes/whisper/models/`.
-6. Requires: ffmpeg, whisper-cpp (`whisper-cli`), Node 18+.
-
-## Use
-```
-/new-video my-reel path/to/footage.mp4 -- 9:16 reel, 30s
-```
+6. Install the packages in **Requirements** above.
 
 ## Share
 ```
