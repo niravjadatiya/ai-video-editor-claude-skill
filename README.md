@@ -1,4 +1,6 @@
-# HyperFrames Reels Kit
+# AI Video Editor — Claude Code Skill
+
+> Claude Code only. Requires the HyperFrames plugin (`hyperframes@hyperframes`). MIT licensed, contributions welcome.
 
 A Claude Code workspace kit for making short talking-head reels with the
 [HyperFrames](https://hyperframes.dev) plugin: footage intake, cheap media analysis, local Gujarati
@@ -29,6 +31,6 @@ SFX placement rules, frame review, and house editing rules.
 
 ## Share
 ```
-git init && git add . && git commit -m "HyperFrames Reels Kit"
-gh repo create hyperframes-reels-kit --public --source=. --push
+git init && git add . && git commit -m "AI Video Editor Claude Skill"
+gh repo create ai-video-editor-claude-skill --public --source=. --push
 ```
